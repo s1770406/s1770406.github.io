@@ -137,32 +137,16 @@ h1{
 <div id="controller">
 	<div id="btL">
 	  <audio id="mute" src="http://k003.kiwi6.com/hotlink/92kkzafj9y/driving1.mp3" loop="loop">Your browser does not support the audio element.</audio>
-        <a href="javascript:playPause();"><img src="https://images2.imgbox.com/1d/c6/htGGyUzL_o.png" width="49" height="50" usemap="#mute_btnMap" id="mute_btn" border="0">
-        <map name="mute_btnMap">
-          <area shape="circle" coords="24,25,21" href="#">
-        </map>
-        </a>
-      <audio id="bibi" src="http://k003.kiwi6.com/hotlink/khlmggczfs/bibi.mp3">Your browser does not support the audio element.</audio>
-		<a id="bibi_btn"><img src="https://images2.imgbox.com/60/f1/8ghrUHPu_o.png" width="71" height="72" usemap="#bibi_btMap" id="bibi_bt">
-        <map name="bibi_btMap">
-          <area shape="circle" coords="35,36,31" href="#">
-        </map>
-	  </a>
+        <a href="javascript:playPause();"><img src="https://images2.imgbox.com/1d/c6/htGGyUzL_o.png" width="49" height="50" id="mute_btn" border="0"></a>
+		<audio id="bibi" src="http://k003.kiwi6.com/hotlink/m9j60ocmmu/bibi.mp3">Your browser does not support the audio element.</audio>
+		<a id="bibi_btn" style="cursor:pointer" outline: 1><img src="https://images2.imgbox.com/60/f1/8ghrUHPu_o.png" id="bibi_bt" width="71" height="72"></a>
 	</div>
 	<img src="https://images2.imgbox.com/18/04/WyicCP8f_o.png" style="display:block; margin:auto;">
 	<div id="btR">
 	  <audio id="power" src="http://k003.kiwi6.com/hotlink/uat3hbfef2/small_car_engine2.mp3">Your browser does not support the audio element.</audio>
-		<a id="power_btn"><img src="https://images2.imgbox.com/0d/63/diAXMNSz_o.png" usemap="#power_btMap" id="power_bt" style="margin-right:10px" >
-        <map name="power_btMap">
-          <area shape="circle" coords="36,36,31" href="#">
-        </map>
-		</a>
-		<audio id="lock" src="http://k003.kiwi6.com/hotlink/40crsbbhxz/Car_Trunk.mp3">Your browser does not support the audio element.</audio>
-		<a id="lock_btn"><img src="https://images2.imgbox.com/67/1f/rhQDwPx8_o.png" usemap="#lock_btMap" id="lock_bt" >
-        <map name="lock_btMap">
-          <area shape="circle" coords="25,25,21" href="#">
-        </map>
-		</a>
+		<a id="power_btn" style="cursor:pointer"><img src="https://images2.imgbox.com/0d/63/diAXMNSz_o.png" id="power_bt" style="margin-right:10px" ></a>
+	  <audio id="lock" src="http://k003.kiwi6.com/hotlink/40crsbbhxz/Car_Trunk.mp3">Your browser does not support the audio element.</audio>
+		<a id="lock_btn" style="cursor:pointer"><img src="https://images2.imgbox.com/67/1f/rhQDwPx8_o.png" id="lock_bt" ></a>
   </div>
 </div>
 <div id="Info">
@@ -202,27 +186,27 @@ h1{
 		car.currentTime = 0;
 		music_btn.src = 'https://images2.imgbox.com/97/7f/hE9ICr9L_o.png';
 	}
-</script>
+</script>s
 <script src="https://cdn.bootcss.com/jquery/1.8.2/jquery.min.js"></script>
 <script>
 $("#lock_btn").click(function(){
 	var music = document.getElementById("lock");
 	music.play();
-	lock_bt.src ='https://images2.imgbox.com/af/40/1B2zng3N_o.png';
+	lock_bt.src ='https://images2.imgbox.com/25/ba/ptmzKxrS_o.gif';
 });	
 $("#power_btn").click(function(){
 	var music = document.getElementById("power");
 	music.play();
-	power_bt.src ='https://images2.imgbox.com/0d/63/diAXMNSz_o.png';
+	power_bt.src ='https://images2.imgbox.com/93/b6/YagVrJdW_o.gif';
 });		
 $("#bibi_btn").click(function(){
 	var music = document.getElementById("bibi");
 	music.play();
-	bibi_bt.src ='https://images2.imgbox.com/80/31/M3JnpnhG_o.png';
+	bibi_bt.src ='https://images2.imgbox.com/80/68/QF8w1QpU_o.gif';
 });	
 function playPause() {
     var music = document.getElementById('mute');
-	music.volume=0.2;
+	//music.volume=0.2;
     var music_btn = document.getElementById('mute_btn');
     if (music.paused){
         music.play();
