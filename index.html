@@ -1,40 +1,54 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html><head>
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Lobster+Two|Mukta+Malar" rel="stylesheet">
 <style>
+html,body{  
+	margin:0px;  
+	height:100%;
+	font-family: 'Mukta Malar', sans-serif;
+} 
 #map {
-	height: 750px;
-	width: 70%;
-	float: right;
+	height: 350px;
+	width: 400px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	z-index: 2;
+	border: thin solid #666;
+}
+#pano {
+    float:right;
+    height:100%;
+    width: 100%;
 	border: thin solid #E0DFDE;
-	border-left: none;
 }
-#sidebar {
-	height:750px;
-	width: 27%;
-	float: right;
-	background-color:#F2F4F7;
-	border: thin solid #E0DFDE;
-	padding-right:10px;
-	padding-left:10px;
-	margin:0px auto;
-	font-family:sans-serif;
-	text-align: justify;
-	text-justify:inter-ideograph;
-	font-size:16px;
-	color:#666;
-	overflow-y:scroll;
-	overflow-x:hidden;
+#controller{
+	height: 290px;
+	width: 701px;
+	position: absolute;
+	left: 50%;
+	bottom: 0px;
+	margin-left: -350px;
+	z-index: 2;
+	background-image: url(https://images2.imgbox.com/b6/e6/xsAz8yRE_o.png);
+	background-size: 100%, 100%;
+	background-repeat: no-repeat;
+	background-position:center bottom;
 }
-#content{
-	padding-right:10px;
-	padding-left:10px;
-	font-family:sans-serif;
+#btL{
+	position: absolute;
+	left:55px;
+	bottom: 0px;	
 }
-#sidebar img{
-	max-width:370px; 
+#btR{
+	position: absolute;
+	right:55px;
+	bottom: 0px;	
+}
+#pano img{
+	max-width:250px; 
 	myimg:expression(onload=function(){ 
 	this.style.width=(this.offsetWidth > 370)?"370px":"auto"});
 	margin:auto;
@@ -43,50 +57,214 @@
 #link{
 	text-align: left;
 }
+#Info{
+	height: 100%;
+	width: 46%;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	z-index: 3;
+	background-image: url(https://images2.imgbox.com/0b/a8/mkYUGMPU_o.png);
+	background-repeat: repeat;
+	color:#cfcfcf;
+	text-align: center;
+	font-size: 18px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+#Info h1{
+	font-family: 'Lobster Two', cursive;
+	text-align: center;
+	margin-top: 70px;
+}
+#Info a,#topbt a{
+	display: inline-block;//擴大超連結區域
+	height: 20px;
+	width: 50px;
+	text-decoration:none;
+	font-size: 18px;
+}
+#Info button{
+    background-color: #161616;
+    border-color:#444444;
+	border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	margin-top: 30px;
+}
+#topbt{
+	height: 41px;
+	width: 96px;
+	position: absolute;
+	left: 50%;
+	margin-left: -48px;
+	top: 0px;
+	z-index: 3;
+	text-align: center;
+	background-image: url(https://images2.imgbox.com/34/c6/xIR0CLL1_o.png);
+	background-repeat: no-repeat;
+}
+#hero{
+	height: 140px;
+	width: 140px;
+	position: absolute;
+	left: 50%;
+	margin-left: -70px;
+	top: 50px;
+	z-index: 3;	
+}
 a{
 	color: #84A3F1;
 	font-size: 14px;
 }
+a:hover{
+	outline: thin;
+}
+area{
+	outline:none;
+	}
 h1{
-	
 	text-align: left;
 }
 </style>
 </head>
 <body>
-<h3>The Stories Map of Leith</h3>
+<div id="pano"></div>
 <div id="map"></div>
-<div id="sidebar"></div>
-<div id="content"></div>
-<div id="sidebar img"></div>
-<div id="link"></div>
+<div id="controller">
+	<div id="btL">
+	  <audio id="mute" src="http://k003.kiwi6.com/hotlink/92kkzafj9y/driving1.mp3" loop="loop">Your browser does not support the audio element.</audio>
+        <a href="javascript:playPause();"><img src="https://images2.imgbox.com/1d/c6/htGGyUzL_o.png" width="49" height="50" usemap="#mute_btnMap" id="mute_btn" border="0">
+        <map name="mute_btnMap">
+          <area shape="circle" coords="24,25,21" href="#">
+        </map>
+        </a>
+      <audio id="bibi" src="http://k003.kiwi6.com/hotlink/khlmggczfs/bibi.mp3">Your browser does not support the audio element.</audio>
+		<a id="bibi_btn"><img src="https://images2.imgbox.com/60/f1/8ghrUHPu_o.png" width="71" height="72" usemap="#bibi_btMap" id="bibi_bt">
+        <map name="bibi_btMap">
+          <area shape="circle" coords="35,36,31" href="#">
+        </map>
+	  </a>
+	</div>
+	<img src="https://images2.imgbox.com/18/04/WyicCP8f_o.png" style="display:block; margin:auto;">
+	<div id="btR">
+	  <audio id="power" src="http://k003.kiwi6.com/hotlink/uat3hbfef2/small_car_engine2.mp3">Your browser does not support the audio element.</audio>
+		<a id="power_btn"><img src="https://images2.imgbox.com/0d/63/diAXMNSz_o.png" usemap="#power_btMap" id="power_bt" style="margin-right:10px" >
+        <map name="power_btMap">
+          <area shape="circle" coords="36,36,31" href="#">
+        </map>
+		</a>
+		<audio id="lock" src="http://k003.kiwi6.com/hotlink/40crsbbhxz/Car_Trunk.mp3">Your browser does not support the audio element.</audio>
+		<a id="lock_btn"><img src="https://images2.imgbox.com/67/1f/rhQDwPx8_o.png" usemap="#lock_btMap" id="lock_bt" >
+        <map name="lock_btMap">
+          <area shape="circle" coords="25,25,21" href="#">
+        </map>
+		</a>
+  </div>
+</div>
+<div id="Info">
+	<h1>Ｗelcome to The Stories Map of Leith</h1><audio id="bgM" src="http://k003.kiwi6.com/hotlink/bwo4d56sz6/Dancing_on_Green_Grass.mp3" autoplay></audio>
+	<p>You can use " The Story Map of Leith " to explore Lieth. <br>
+	  Drive on the road and press up, down, left, right keys to move around or head to the red markers.  As you find the red mark, click it to read the history or story in that place. The pegman (yellow person) is where you are on the map. Let's start from Lieth Academy. <br>
+	  Enjoy  your journey.</p>
+	<button type="button"><a href="#" onclick="javascript:turnoff('Info')">Start</a></button>
+	<p>How well do you know about Leith? <br>
+	 Try the simple quiz! </p>
+	<button type="button"><a href="#" onclick="window.open('https://quizlet.com/286879321/match');">Quiz</a></button>
+</div>
+<div id="topbt"><a href="#" onclick="javascript:turnon('Info')">Home</a></div>
+<div id="hero"><img src="https://images2.imgbox.com/d2/ed/WZLFtHCZ_o.gif"></div>
 <script>
-	var map;
+	function hero(){
+     var div = document.getElementById('hero');
+     if(div.style.display=="block"){
+           div.style.display="non";
+     }else{
+		 div.style.display="block";
+	 }
+}
+	var car = document.getElementById("mute");
+	var music_btn = document.getElementById('mute_btn');
+	function turnoff(obj){
+		document.getElementById(obj).style.display="none";
+		var audio = document.getElementById("bgM");
+		car.play();
+		music_btn.src = 'https://images2.imgbox.com/1d/c6/htGGyUzL_o.png';
+		audio.pause();//停止音樂
+		audio.currentTime = 0;
+	}
+	function turnon(obj){
+		document.getElementById(obj).style.display="";
+		car.pause();
+		car.currentTime = 0;
+		music_btn.src = 'https://images2.imgbox.com/97/7f/hE9ICr9L_o.png';
+	}
+</script>
+<script src="https://cdn.bootcss.com/jquery/1.8.2/jquery.min.js"></script>
+<script>
+$("#lock_btn").click(function(){
+	var music = document.getElementById("lock");
+	music.play();
+	lock_bt.src ='https://images2.imgbox.com/af/40/1B2zng3N_o.png';
+});	
+$("#power_btn").click(function(){
+	var music = document.getElementById("power");
+	music.play();
+	power_bt.src ='https://images2.imgbox.com/0d/63/diAXMNSz_o.png';
+});		
+$("#bibi_btn").click(function(){
+	var music = document.getElementById("bibi");
+	music.play();
+	bibi_bt.src ='https://images2.imgbox.com/80/31/M3JnpnhG_o.png';
+});	
+function playPause() {
+    var music = document.getElementById('mute');
+	music.volume=0.2;
+    var music_btn = document.getElementById('mute_btn');
+    if (music.paused){
+        music.play();
+        music_btn.src = 'https://images2.imgbox.com/1d/c6/htGGyUzL_o.png';
+    }
+    else{
+        music.pause();
+        music_btn.src = 'https://images2.imgbox.com/97/7f/hE9ICr9L_o.png'; 
+    }
+}
+</script>
+<script>
 	function initMap() {
-		  map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15.5,
-          center: new google.maps.LatLng(55.974765, -3.175315),//Guru Nanak Gurdwara
-		  //zoomControl: false,
-          //scaleControl: true,
-		  //streetViewControl:false,
+		  var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: new google.maps.LatLng(55.971530, -3.173180),//20
+		  zoomControl: true,
+    	  zoomControlOptions: {
+			  position: google.maps.ControlPosition.RIGHT_CENTER
+		  },
+		  streetViewControl:true,
+		  streetViewControlOptions: {
+			  position: google.maps.ControlPosition.RIGHT_CENTER
+    		},
 		  //map style
 			styles: [{"elementType":"geometry","stylers":[{"hue":"#ff4400"},{"saturation":-68},{"lightness":-4},{"gamma":0.72}]},{"featureType":"road","elementType":"labels.icon"},{"featureType":"landscape.man_made","elementType":"geometry","stylers":[{"hue":"#0077ff"},{"gamma":3.1}]},{"featureType":"water","stylers":[{"hue":"#00ccff"},{"gamma":0.44},{"saturation":-33}]},{"featureType":"poi.park","stylers":[{"hue":"#44ff00"},{"saturation":-23}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"hue":"#007fff"},{"gamma":0.77},{"saturation":65},{"lightness":99}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"gamma":0.11},{"weight":5.6},{"saturation":99},{"hue":"#0091ff"},{"lightness":-86}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"lightness":-48},{"hue":"#ff5e00"},{"gamma":1.2},{"saturation":-23}]},{"featureType":"transit","elementType":"labels.text.stroke","stylers":[{"saturation":-64},{"hue":"#ff9100"},{"lightness":16},{"gamma":0.47},{"weight":2.7}]}]			
 		//map style end	
         });
-		
+
 		google.maps.event.addListener(map, 'click', function() {  //關閉地圖其他資訊視窗
 			infoWindow.close();
 		});
+		var map;
 		var features =[
 			{
 				position: new google.maps.LatLng(55.967772, -3.166885),//Leith ACcademy
 				label:{text:' Start',color:'#800000'},
-				title:"<h1>1.Leith Academy</h1>"
-				//marker.setIcon('https://images2.imgbox.com/4e/cc/inTNkmJ5_o.png'),
+				title:"<h1>Ｗelcome to The Stories Map of Leith</h1>You can use The Story Map to explore Lieth. Drive on the road and press up, down, left, right keys to move your view around and see how locations around the city. As you find the red mark, press it to read the history or story in that place.<p>The yellow person is where you are on the map. When you go forward and head to any place, the yellow person will change the location on the map in time. Let's start from Lieth Academy. Enjoy the view and your journey. </p>"
 			},{
-				position: new google.maps.LatLng(55.971087, -3.163905),//Leit links//https://goo.gl/wFMXfx">'+'https://goo.gl/wFMXfx
+				position: new google.maps.LatLng(55.971087, -3.163905),//Leith links
 				label:{text:'1',color:'#800000'},
-				title: "<h1>1.Leith Links</h1>Leith Links is well-known for being where the first rules of golf were drawn up in 1744 by the Honourable Company of Edinburgh Golfers. The 13 rules they wrote down become the basis for the modern game."+'<div id=link><p>Read more about 13 rules: <a href="http://www.scottishgolfhistory.org/origin-of-golf-terms/rules-of-golf/">'+'http://www.scottishgolfhistory.org/origin-of-golf-terms/rules-of-golf/</a></p></div><p>Cairn on Leith Links commemorating first golf competition 1744.</p></div>'+'<div><img src="https://images2.imgbox.com/83/d6/9AuM6RHJ_o.png"></p><h2>Task</h2>A short trip:walk to Lieth Links, find out the stone, read the words recorded on it and take a picture with the stone and your friends.</div>'
+				title: "<h1>1.Leith Links</h1>Leith Links is well-known for being where the first rules of golf were drawn up in 1744 by the Honourable Company of Edinburgh Golfers. The 13 rules they wrote down become the basis for the modern game."+'<div id=link><p>Read more about 13 rules: <a href="http://www.scottishgolfhistory.org/origin-of-golf-terms/rules-of-golf/">'+'http://www.scottishgolfhistory.org/origin-of-golf-terms/rules-of-golf/</a></p></div><p>Cairn on Leith Links commemorating first golf competition 1744.</p></div>'+'<div><img src="https://images2.imgbox.com/83/d6/9AuM6RHJ_o.png"></p></div>'
 			},{
 				position: new google.maps.LatLng(55.970952, -3.169558),//Irvine Welsh house
 				label:{text:'2',color:'#800000'},
@@ -106,11 +284,11 @@ h1{
 			},{
 				position: new google.maps.LatLng(55.970584, -3.171645),//12 Queen Victoria
 				label:{text:'12',color:'#800000'},
-				title:"<h1>12.Queen Victoria</h1>Bronze statue of Queen Victoria wearing a crown, and holding a sceptre with an eagle at the top of it. The sceptre lies along her right arm, but is held with both hands. The statue stands on a sandstone pedestal which has a bronze relief panel attached to each side. The one on the left shows Queen Victoria entering Leith in 1842. She is depicted seated in an open carriage with Prince Albert standing beside her, and a group of men in gowns greeting her [members of the Town Council ?]. The panel on the right shows the 5th Volunteer Battalion, The Royal Scots, being presented by an officer to a figure of Britannia [?] with a lion lying at her feet. Behind the figures is a rocky landscape beyond which is a sun emitting large rays."+'<div id="link">source:<a href="https://canmore.org.uk/site/137687/edinburgh-leith-walk-statue-of-queen-victoria">'+'https://canmore.org.uk/site/137687/edinburgh-leith-walk-statue-of-queen-victoria</a></div>'+'<div><img src="https://images2.imgbox.com/6c/64/z0afYaqw_o.png"></div>'
+				title:"<h1>12.Queen Victoria</h1>Bronze statue of Queen Victoria wearing a crown, and holding a sceptre with an eagle at the top of it. The sceptre lies along her right arm, but is held with both hands. The statue stands on a sandstone pedestal which has a bronze relief panel attached to each side. The one on the left shows Queen Victoria entering Leith in 1842. She is depicted seated in an open carriage with Prince Albert standing beside her, and a group of men in gowns greeting her members of the Town Council. The panel on the right shows the 5th Volunteer Battalion, The Royal Scots, being presented by an officer to a figure of Britannia with a lion lying at her feet. Behind the figures is a rocky landscape beyond which is a sun emitting large rays."+'<div id="link">source:<a href="https://canmore.org.uk/site/137687/edinburgh-leith-walk-statue-of-queen-victoria">'+'https://canmore.org.uk/site/137687/edinburgh-leith-walk-statue-of-queen-victoria</a></div>'+'<div><img src="https://images2.imgbox.com/6c/64/z0afYaqw_o.png"></div>'
 			},{
 				position: new google.maps.LatLng(55.972004, -3.174298),//14.Former Andrew Bell school
 				label:{text:'14',color:'#800000'},
-				title:"<h1>14.Former Andrew Bell school</h1>Dr Andrew Bell FRSE FRAS (27 March 1753 – 27 January 1832) was a Scottish Episcopalian priest and educationalist who pioneered the Madras System of Education[1] (also known as mutual instruction or the monitorial system) in schools and was the founder of Madras College, a secondary school in St. Andrews.<p>In February 1787 he went out to India and went ashore at Madras, where he stayed for 10 years. He became chaplain to a number of British regiments and gave a course of lectures. In 1789 he was appointed superintendent of an orphan asylum for the illegitimate and orphaned sons of officers. He claimed to see some Malabar children teaching others the alphabet by drawing in sand and decided to develop a similar method, putting bright children in charge of those who were less bright. By the time of his death twelve thousand schools had been established in Great Britain and the colonies. The system was also used by the Church Missionary Society and other institutions.</p>"+'<div id="link">source: <a href="https://en.wikipedia.org/wiki/Andrew_Bell_(educationalist)">'+'https://en.wikipedia.org/wiki/Andrew_Bell_(educationalist)</a></div>'+'<div><img src="https://images2.imgbox.com/5e/c6/n4HrJDoQ_o.png"></div>'
+				title:"<h1>14.Former Andrew Bell school</h1>Dr Andrew Bell FRSE FRAS (27 March 1753 – 27 January 1832) was a Scottish Episcopalian priest and educationalist who pioneered the Madras System of Education (also known as mutual instruction or the monitorial system) in schools and was the founder of Madras College, a secondary school in St. Andrews.<p>In February 1787 he went out to India and went ashore at Madras, where he stayed for 10 years. He became chaplain to a number of British regiments and gave a course of lectures. In 1789 he was appointed superintendent of an orphan asylum for the illegitimate and orphaned sons of officers. He claimed to see some Malabar children teaching others the alphabet by drawing in sand and decided to develop a similar method, putting bright children in charge of those who were less bright. By the time of his death twelve thousand schools had been established in Great Britain and the colonies. The system was also used by the Church Missionary Society and other institutions.</p>"+'<div id="link">source: <a href="https://en.wikipedia.org/wiki/Andrew_Bell_(educationalist)">'+'https://en.wikipedia.org/wiki/Andrew_Bell_(educationalist)</a></div>'+'<div><img src="https://images2.imgbox.com/5e/c6/n4HrJDoQ_o.png"></div>'
 			},{
 				position: new google.maps.LatLng(55.971392, -3.175226),//16Leith Victoria Swim Centre
 				label:{text:'16',color:'#800000'},
@@ -134,7 +312,7 @@ h1{
 			},{
 				position: new google.maps.LatLng(55.972105, -3.170924),//25South Leith Parish Church
 				label:{text:'25',color:'#800000'},
-				title:"<h1>25.South Leith Parish Church</h1>Lost Victorian buildings<br>In 1885, architects James M Thomson and Robert Thornton Shiells won a competition to produce a design for the Kirkgate United Presbyterian Church (also known as St Anthony's Church). The church was located at the Great Junction Street end of Henderson Street (on the corner of Henderson and St Anthony Street). It opened in 1886 on the site where South Leith Parish Church now has its church halls. This large, ornate, Italianate structure was to last less than a hundred years. It was demolished in 1975; despite some protest and an attempt to get it listed in order to prevent its destruction. The current church hall building was opened on 2 July 1982 by the Duke of Edinburgh. A small stone relief from the earlier church can still be seen inset into the fascia of the current church halls, near the entrance. This relief and a time capsule (discovered in the foundations of the church during its demolition and then reburied under the new structure) are all that remain of the Kirkgate United Presbyterian Church on Henderson Street.</br>"+'<div id="link">source: <a href="http://www.wikiwand.com/en/Henderson_Street">'+'http://www.wikiwand.com/en/Henderson_Street</a></div>'+'</a></div>'+'</a></div>'+'<div><img src="https://images2.imgbox.com/8a/d3/Nmn6R1pk_o.png"></div>'
+				title:"<h1>25.South Leith Parish Church</h1>Lost Victorian buildings<br>In 1885, architects James M Thomson and Robert Thornton Shiells won a competition to produce a design for the Kirkgate United Presbyterian Church (also known as St Anthony's Church). The church was located at the Great Junction Street end of Henderson Street (on the corner of Henderson and St Anthony Street). It opened in 1886 on the site where South Leith Parish Church now has its church halls. This large, ornate, Italianate structure was to last less than a hundred years. It was tore down in 1975. The current church hall building was opened on 2 July 1982 by the Duke of Edinburgh. A small stone relief from the earlier church can still be seen inset into the fascia of the current church halls, near the entrance. This relief and a time capsule (discovered in the foundations of the church during its demolition and then reburied under the new structure) are all that remain of the Kirkgate United Presbyterian Church on Henderson Street.</br>"+'<div id="link">source: <a href="http://www.wikiwand.com/en/Henderson_Street">'+'http://www.wikiwand.com/en/Henderson_Street</a></div>'+'</a></div>'+'</a></div>'+'<div><img src="https://images2.imgbox.com/8a/d3/Nmn6R1pk_o.png"></div>'
 			},{
 				position: new google.maps.LatLng(),//
 				label:{text:'0',color:'#800000'},
@@ -142,7 +320,7 @@ h1{
 			},{
 				position: new google.maps.LatLng(55.975893, -3.184745),//36 Wall of Leith Fort
 				label:{text:'36',color:'#800000'},
-				title:"<h1>36.Wall of Leith Fort</h1>The fort was built after Leith was threatened by John Paul Jones 0747-92), the leader of the embryonic American navy that ventured up the Firth of Forth in 1779 during the American War of Independence. Only bad weather prevented Jones from capturing Leith. He was actually a Scotsman who allied himself with the revolutionary cause and earned himself the reputation as the founder of the American navy.<p>Leith Fort was designed by James Craig (1739-95) — best known for winning a competition in 1766 for a plan for the original New Town in Edinburgh (see p.154). Despite this early promise, his career was never very successful and little of his work survives today. The army left the fort in 1957 after 164 years of being based in Leith and it was largely demolished in the following years.（Stephen Millar, Leith Walk 2017, p.386）</p>"+'<div><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Leith_Fort_boundary_wall.jpg"></div>'
+				title:"<h1>36.Wall of Leith Fort</h1>The fort was built after Leith was threatened by John Paul Jones (1747-92), the leader of the embryonic American navy that ventured up the Firth of Forth in 1779 during the American War of Independence. Only bad weather prevented Jones from capturing Leith. He was actually a Scotsman who allied himself with the revolutionary cause and earned himself the reputation as the founder of the American navy.<p>Leith Fort was designed by James Craig (1739-95) — best known for winning a competition in 1766 for a plan for the original New Town in Edinburgh. Despite this early promise, his career was never very successful and little of his work survives today. The army left the fort in 1957 after 164 years of being based in Leith and it was largely demolished in the following years.（Stephen Millar, Leith Walk 2017, p.386）</p>"+'<div><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Leith_Fort_boundary_wall.jpg"></div>'
 			},{
 				position: new google.maps.LatLng(55.974765, -3.175315),//30 St Thomas' Church
 				label:{text:'30',color:'#800000'},
@@ -259,22 +437,51 @@ h1{
 				title:"<h1>93.Jupiter Artland</h1>The garden is a whimsical collaboration between the family, the artists and the landscape. All the works are site specific and personal to Jupiter. The end product is a journey, narrated by the various artists who are given the freedom to express themselves in the landscape. The transitory nature of the sculpture park makes it hard to believe it is only ten miles outside of Edinburgh. Full of surprises, from the initial confrontation of Charles Jencks' 'Life Mounds', which visitors drive through on entering the park, to the jovial creation by Jim Lambie, which both delights and astonishes. With no set routes through the park and an emphasis on exploration and discovery the individual is left to engage with the artworks and the land as a whole. Continuing the theme of self discovery, Jupiter values education and is committed to providing an educational resource for schools in the region and maintaining a charitable status. "+'<div id="link">source: <a href="https://www.visitscotland.com/info/see-do/jupiter-artland-p245431">'+'https://www.visitscotland.com/info/see-do/jupiter-artland-p245431</a></div>'+'</a></div>'+'<div><img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Life_Mounds_by_Charles_Jencks_-_geograph.org.uk_-_1469187.jpg"></div>'
 			}
 		];
-		  
+			var fenway = {lat: 55.967853, lng: -3.167145};//Lieth Academy
+		 	var panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('pano'), {
+              position: fenway,  
+              pov: {
+                heading: 350,
+                pitch: 10
+              },
+			  motionTracking: true,
+            });
+        map.setStreetView(panorama);
+		//panorama.addListener('position_changed', function(){
+            //var latLon = { lat: panorama.getPosition().lat(), lng: panorama.getPosition().lng() };
+			//map.setView(latLon);
+        //});
 		features.forEach(function(features){
 			var marker = new google.maps.Marker({
-			position: features.position,
-			label: features.label,
-			title: features.title,
-			map: map
+				position: features.position,
+				label: features.label,
+				title: features.title,
+				map: map
 			});
-		marker.addListener('click', function(e) {
-			var sidebar = document.getElementById("sidebar");
-			map.setCenter(marker.getPosition());
-			sidebar.innerHTML = marker.getTitle();
+			marker.addListener('click', function(e) {
+				var sidebar = document.getElementById("sidebar");
+				map.setCenter(marker.getPosition());
+				//sidebar.innerHTML = marker.getTitle();
 			});
-		marker.addListener("mouseover", function() {
-		});
-		marker.setMap(map);	
+			marker.addListener("mouseover", function() {
+			});
+			marker.setMap(map);	
+			var infowindow = new google.maps.InfoWindow({
+					content:features.title,
+				});
+			var streetMarker=new google.maps.Marker({
+				position: features.position,
+				map: panorama,
+				label: features.label,
+			});
+			streetMarker.addListener('click', function(e) {
+				var sidebar = document.getElementById("sidebar");
+				map.setCenter(marker.getPosition());
+				//sidebar.innerHTML = marker.getTitle();
+				infowindow.open(panorama, streetMarker);
+				//map.setCenter(panorama.getPosition());
+			});
         });
       }
     </script>
