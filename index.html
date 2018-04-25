@@ -37,6 +37,10 @@ html,body{
 	background-repeat: no-repeat;
 	background-position:center bottom;
 }
+#btL img:hover,#btR img:hover {
+	border-radius: 50%;
+	box-shadow: 0 0 2px 2px;
+}
 #btL{
 	position: absolute;
 	left:55px;
@@ -123,9 +127,6 @@ a{
 a:hover{
 	outline: thin;
 }
-area{
-	outline:none;
-	}
 h1{
 	text-align: left;
 }
@@ -136,7 +137,7 @@ h1{
 <div id="map"></div>
 <div id="controller">
 	<div id="btL">
-	  <audio id="mute" src="http://k003.kiwi6.com/hotlink/92kkzafj9y/driving1.mp3" loop="loop">Your browser does not support the audio element.</audio>
+	  <audio id="mute" src="http://k003.kiwi6.com/hotlink/bwo4d56sz6/Dancing_on_Green_Grass.mp3" autoplay loop="loop">Your browser does not support the audio element.</audio>
         <a href="javascript:playPause();"><img src="https://images2.imgbox.com/1d/c6/htGGyUzL_o.png" width="49" height="50" id="mute_btn" border="0"></a>
 		<audio id="bibi" src="http://k003.kiwi6.com/hotlink/m9j60ocmmu/bibi.mp3">Your browser does not support the audio element.</audio>
 		<a id="bibi_btn" style="cursor:pointer" outline: 1><img src="https://images2.imgbox.com/60/f1/8ghrUHPu_o.png" id="bibi_bt" width="71" height="72"></a>
@@ -150,7 +151,7 @@ h1{
   </div>
 </div>
 <div id="Info">
-	<h1>Ｗelcome to The Stories Map of Leith</h1><audio id="bgM" src="http://k003.kiwi6.com/hotlink/bwo4d56sz6/Dancing_on_Green_Grass.mp3" autoplay></audio>
+	<h1>Ｗelcome to The Stories Map of Leith</h1>
 	<p>You can use " The Story Map of Leith " to explore Lieth. <br>
 	  Drive on the road and press up, down, left, right keys to move around or head to the red markers.  As you find the red marker, click it on the streetview to read the history or story in that place. The pegman (yellow person) is where you are on the map. Let's start from Lieth Academy. <br>
 	  Enjoy  your journey.</p>
@@ -170,21 +171,11 @@ h1{
 		 div.style.display="block";
 	 }
 }
-	var car = document.getElementById("mute");
-	var music_btn = document.getElementById('mute_btn');
 	function turnoff(obj){
 		document.getElementById(obj).style.display="none";
-		var audio = document.getElementById("bgM");
-		car.play();
-		music_btn.src = 'https://images2.imgbox.com/1d/c6/htGGyUzL_o.png';
-		audio.pause();//停止音樂
-		audio.currentTime = 0;
 	}
 	function turnon(obj){
 		document.getElementById(obj).style.display="";
-		car.pause();
-		car.currentTime = 0;
-		music_btn.src = 'https://images2.imgbox.com/97/7f/hE9ICr9L_o.png';
 	}
 </script>s
 <script src="https://cdn.bootcss.com/jquery/1.8.2/jquery.min.js"></script>
