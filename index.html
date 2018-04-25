@@ -177,8 +177,7 @@ h1{
 	function turnon(obj){
 		document.getElementById(obj).style.display="";
 	}
-</script>s
-<script src="https://cdn.bootcss.com/jquery/1.8.2/jquery.min.js"></script>
+</script><script src="https://cdn.bootcss.com/jquery/1.8.2/jquery.min.js"></script>
 <script>
 $("#lock_btn").click(function(){
 	var music = document.getElementById("lock");
@@ -197,7 +196,7 @@ $("#bibi_btn").click(function(){
 });	
 function playPause() {
     var music = document.getElementById('mute');
-	//music.volume=0.2;
+	music.volume=0.5;
     var music_btn = document.getElementById('mute_btn');
     if (music.paused){
         music.play();
@@ -235,7 +234,7 @@ function playPause() {
 			{
 				position: new google.maps.LatLng(55.967772, -3.166885),//Leith ACcademy
 				label:{text:' Start',color:'#800000'},
-				title:"<h1>Ｗelcome to The Stories Map of Leith</h1>You can use The Story Map to explore Lieth. Drive on the road and press up, down, left, right keys to move your view around and see how locations around the city. As you find the red mark, press it to read the history or story in that place.<p>The yellow person is where you are on the map. When you go forward and head to any place, the yellow person will change the location on the map in time. Let's start from Lieth Academy. Enjoy the view and your journey. </p>"
+				title:""
 			},{
 				position: new google.maps.LatLng(55.971087, -3.163905),//Leith links
 				label:{text:'1',color:'#800000'},
@@ -289,10 +288,6 @@ function playPause() {
 				label:{text:'25',color:'#800000'},
 				title:"<h1>25.South Leith Parish Church</h1>Lost Victorian buildings<br>In 1885, architects James M Thomson and Robert Thornton Shiells won a competition to produce a design for the Kirkgate United Presbyterian Church (also known as St Anthony's Church). The church was located at the Great Junction Street end of Henderson Street (on the corner of Henderson and St Anthony Street). It opened in 1886 on the site where South Leith Parish Church now has its church halls. This large, ornate, Italianate structure was to last less than a hundred years. It was tore down in 1975. The current church hall building was opened on 2 July 1982 by the Duke of Edinburgh. A small stone relief from the earlier church can still be seen inset into the fascia of the current church halls, near the entrance. This relief and a time capsule (discovered in the foundations of the church during its demolition and then reburied under the new structure) are all that remain of the Kirkgate United Presbyterian Church on Henderson Street.</br>"+'<div id="link">source: <a href="http://www.wikiwand.com/en/Henderson_Street">'+'http://www.wikiwand.com/en/Henderson_Street</a></div>'+'</a></div>'+'</a></div>'+'<div><img src="https://images2.imgbox.com/8a/d3/Nmn6R1pk_o.png"></div>'
 			},{
-				position: new google.maps.LatLng(),//
-				label:{text:'0',color:'#800000'},
-				title:"<h1></h1>"+'<div id="link"><a href="">'+'</a></div>'+'</a></div>'+'<div><img src="images/.png"></div>'
-			},{
 				position: new google.maps.LatLng(55.975893, -3.184745),//36 Wall of Leith Fort
 				label:{text:'36',color:'#800000'},
 				title:"<h1>36.Wall of Leith Fort</h1>The fort was built after Leith was threatened by John Paul Jones (1747-92), the leader of the embryonic American navy that ventured up the Firth of Forth in 1779 during the American War of Independence. Only bad weather prevented Jones from capturing Leith. He was actually a Scotsman who allied himself with the revolutionary cause and earned himself the reputation as the founder of the American navy.<p>Leith Fort was designed by James Craig (1739-95) — best known for winning a competition in 1766 for a plan for the original New Town in Edinburgh. Despite this early promise, his career was never very successful and little of his work survives today. The army left the fort in 1957 after 164 years of being based in Leith and it was largely demolished in the following years.（Stephen Millar, Leith Walk 2017, p.386）</p>"+'<div><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Leith_Fort_boundary_wall.jpg"></div>'
@@ -304,8 +299,6 @@ function playPause() {
 				position: new google.maps.LatLng(55.975788, -3.179251),//33.Leith History Mural 
 				label:{text:'33',color:'#800000'},
 				title:"<h1>33.Leith History Mural</h1>A local treasure found near the Leith Library, the Leith History Mural is one of the original historical murals that predates those commissioned by LeithLate. The masterpiece of Tim Chalk and Paul Grime, this captivating public artwork journeys through time to narrate Leith’s colourful history.<p></p><p></p>"+'<div id="link">source: <a href="https://theculturetrip.com/europe/united-kingdom/scotland/articles/a-street-art-tour-of-edinburgh/">'+'https://theculturetrip.com/europe/united-kingdom/scotland/articles/a-street-art-tour-of-edinburgh/</a></div>'+'</a></div>'+'<div><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Leith_Mural_-_geograph.org.uk_-_1315213.jpg"></div>'
-			},{
-				position: new google.maps.LatLng(),//48.
 			},{
 				position: new google.maps.LatLng(57.356496, -2.764675),//49.Leith Hall
 				label:{text:'49',color:'#800000'},
