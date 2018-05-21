@@ -1,1 +1,1 @@
-# s1770406.github.io
+# s.github.io
